@@ -1,2 +1,1 @@
-# Counter-Strike-server-landing-page
-Simple page for gameserver
+# Лендинг для сервера по Counter-Strike
