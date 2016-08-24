@@ -95,7 +95,7 @@
   <div class="percent_of_filled">
     <div class="background_pof">
       <div class="text_pof">
-        <?=$w;?>%
+        <?=$p;?> / <?=$m;?>
       </div>
       <div class="level_pof" style="width: <?=$w;?>%;">
       </div> 
