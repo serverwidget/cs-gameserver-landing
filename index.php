@@ -99,7 +99,7 @@
           <tr>
             <td id="nickbanned" align="left">'.$row['player_nick'].'</td>
             <td id="reasonbanned" align="left">'.$row['ban_reason'].'</td>
-            <td align="right">'.$row['ban_length'].'</td>
+            <td align="right">'. (($row['ban_length'] == 0) ? 'Навсегда' : $row['ban_length']) .'</td>
           </tr>
 
           ';
@@ -125,8 +125,8 @@
       echo '
 
        <tr>
-            <td id="nickadmin" align="left">'.$row['nickname'].'</td>
-          <td align="right">'.$row['days'].'</td>
+          <td id="nickadmin" align="left">'.$row['nickname'].'</td>
+          <td align="right">'. (($row['days'] == 0) ? 'Навсегда' : $row['days']) .'</td>
        </tr>
 
       ';
