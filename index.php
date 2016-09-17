@@ -12,6 +12,20 @@
 <div class="main_wrapper">
 <?php
 
+function formatTime($seconds) {
+  $days   = floor($seconds / 86400);
+  $hours   = floor(($seconds - ($days * 86400)) / 3600);
+  $minutes = floor(($seconds - ($days * 86400) - ($hours * 3600)) / 60);
+
+  $seconds = $seconds - ($days * 86400) - ($hours * 3600) - ($minutes * 60);
+
+  if ($hours && $hours < 10) { $hours = "0".$hours; }
+  if ($minutes < 10) { $minutes = "0".$minutes; }
+  if ($seconds < 10) { $seconds = "0".$seconds; }
+
+  return ($days ? $days.'d ' : '').($hours ? $hours.':' : '').$minutes.':'.$seconds;
+}
+
   // Скрипт serverwidget
   // Вам необходимо добавить сервер в панели управления.
   // Вам необходимо зарегистрироваться на serverwidget.com и в разделе "Настройки" -> "Доступ к API" скопировать свой Token ключ.
@@ -152,7 +166,7 @@ function formatTime(seconds) {
   return (days ? days+'d ' : '')+(hours ? hours+':' : '')+minutes+':'+seconds;
 }
 function updatePlayerTime(elements) {
-  elements.each(elements, function() {
+  elements.each(function() {
     var element = $(this);
     var time = parseInt(element.data('time')) || 0;
     time++;
@@ -179,7 +193,7 @@ function updatePlayerTime(elements) {
 				<td align="left"><?=($idx + 1);?></td>
 				<td align="left"><?=htmlspecialchars($player['name']);?></td>
 				<td align="center"><?=$player['score'];?></td>
-				<td align="right" data-time="<?=$player['time'];?>"><?=$player['date'];?></td>
+				<td align="right" data-time="<?=$player['time'];?>"><?=formatTime($player['time']);?></td>
 			</tr>
 		<? endforeach; ?>
 		<? else: ?>
