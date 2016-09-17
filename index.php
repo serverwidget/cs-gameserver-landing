@@ -28,7 +28,7 @@
 
   if (count($serverInfo['result']) && is_array($serverInfo['result'])) {
     $server = $serverInfo['result'][0];
-    $players = $API->method("server.players", array("address" => $address));
+    $players = $API->method("server.players", array("address" => $server_address));
   }
 
   $img_dir = dirname(__FILE__).DIRECTORY_SEPARATOR.'img'.DIRECTORY_SEPARATOR.'maps'.DIRECTORY_SEPARATOR;
